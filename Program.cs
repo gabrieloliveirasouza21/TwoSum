@@ -1,6 +1,6 @@
 ﻿internal class Program {
     private static void Main(string[] args) {
-        int[] arr = {2,4,6,7};
+        int[] arr = {6,7,4,2};
         TwoSum(arr, 6);
         
 
@@ -17,18 +17,24 @@
         for (int i = 0; i < nums.Length - 1; i++) {
             int contador = i + 1;
             sums.Add(i.ToString() + " "+ contador.ToString(), nums[i] + nums[i+1]);
+            
+        }
+
+        foreach (var s in sums) {
+            Console.WriteLine(s);
         }
 
         
-        int[] arrFinal = new int[2];
+        int[] arrFinal = { 0, 0 };
         foreach (var s in sums) {
             if (s.Value.Equals(target)) {
 
                 char[] chaves = s.Key.ToCharArray();
-
-                arrFinal[0] = chaves[0];
-                arrFinal[1] = chaves[1];
-                //return arrFinal;
+                //Console.WriteLine("chaves[0] " + chaves[0]);
+                //Console.WriteLine("chaves[1] " + chaves[2]);
+                arrFinal[0] = chaves[0] - 48;
+                arrFinal[1] = chaves[2] - 48;
+                break;
             }
         }
 
