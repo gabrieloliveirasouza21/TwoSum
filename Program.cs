@@ -1,7 +1,13 @@
 ﻿internal class Program {
     private static void Main(string[] args) {
-        int[] arr = {6};
-        Console.WriteLine(TwoSum(arr, 6));
+        int[] arr = {4,3,2,5,8};
+        int[] retorno = TwoSum(arr, 6);
+
+        foreach(int i in retorno) {
+            Console.Write(i + " ");
+        }
+
+
         
         
 
@@ -9,39 +15,17 @@
 
     public static int[] TwoSum(int[] nums, int target) {
 
-        
-
-        Dictionary<string,int> sums = new Dictionary<string,int>();
-
-        for (int i = 0; i < nums.Length - 1; i++) {
-            int contador = i + 1;
-            sums.Add(i.ToString() + " "+ contador.ToString(), nums[i] + nums[contador]);
-            
-        }
-
-        foreach (var s in sums) {
-            Console.WriteLine(s);
-        }
-
-        
-        int[] arrFinal = { 0, 0 };
-        foreach (var s in sums) {
-            if (s.Value.Equals(target)) {
-
-                char[] chaves = s.Key.ToCharArray();
-                Console.WriteLine("chaves[0] " + chaves[0]);
-                Console.WriteLine("chaves[1] " + chaves[2]);
-                arrFinal[0] = chaves[0] - 48;
-                arrFinal[1] = chaves[2] - 48;
-                break;
-               
+        for (int i = 0; i < nums.Length; i++) {
+            int atual = nums[i];
+            for (int j = 1; j<nums.Length; j++) {
+                if (atual + nums[j] == target) {
+                    return new int[] { nums[i], nums[j] };
+                }
             }
         }
 
-        foreach (var s in arrFinal) {
-            Console.WriteLine(s);
-        }
+        return new int[0];
 
-        return arrFinal;
+
     }
 }
