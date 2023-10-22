@@ -17,9 +17,12 @@
 
         for (int i = 0; i < nums.Length; i++) {
             int atual = nums[i];
-            for (int j = 1; j<nums.Length; j++) {
+            for (int j = 0; j<nums.Length; j++) {
+                if (j.Equals(i)) {
+                    continue;
+                }
                 if (atual + nums[j] == target) {
-                    return new int[] { nums[i], nums[j] };
+                    return new int[] { i, j };
                 }
             }
         }
